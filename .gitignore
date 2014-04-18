@@ -1,0 +1,15 @@
+Makefile
+config.h
+config.log
+config.status
+lib/Makefile
+lib/libkcrap.so
+lib/libkcrap.so.0
+server/Makefile
+server/kcrap_server
+server/modules_list.h
+test/Makefile
+test/kcrapclient
+test/test-ntlm
+test/test-ntlmv2
+test/test-ntlmv2s
