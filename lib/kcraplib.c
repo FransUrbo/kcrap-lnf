@@ -207,6 +207,20 @@ static int kcrap_recv_rep(struct kcrap_context *context, int sock, int wait_ms, 
     return EAGAIN;
 }
 
+static int getfqdn(char *buf, size_t max) {
+	struct in_addr lo = { .s_addr = htonl(INADDR_LOOPBACK) };
+	struct hostent *he;
+
+	he = gethostbyaddr(&lo, sizeof(lo), AF_INET);
+	if (he) {
+		strncpy(buf, he->h_name, max);
+		buf[max-1] = '\0';
+		return 0;
+	}
+
+	return gethostname(buf, max);
+}
+
 static int kcrap_mk_req(struct kcrap_context *context, struct sockaddr_in *to, krb5_keyblock **keyblock,
 		       krb5_data *outdata) {
     int retval;
@@ -250,7 +264,7 @@ static int kcrap_mk_req(struct kcrap_context *context, struct sockaddr_in *to, k
 	    goto free1;
 	}
 
-	if (gethostname(hostname, sizeof(hostname)) != 0) {
+	if (getfqdn(hostname, sizeof(hostname)) != 0) {
 	    retval = errno;
 	    snprintf(_errmsg, ERRBUF, "%s while getting hostname", error_message(retval));
 	    goto free1;
