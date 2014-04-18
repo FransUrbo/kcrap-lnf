@@ -64,7 +64,7 @@ int kcrap_open_kdb(krb5_context context, profile_t profile, char* kcrap_section)
 	strcat(dbargs[0], dbname);
     }
     if ((retval = krb5_db_open(context, dbargs,
-			       KRB5_KDB_OPEN_RO | KRB5_KDB_SRV_TYPE_OTHER))) {
+			       KRB5_KDB_OPEN_RO | KRB5_KDB_SRV_TYPE_KDC))) {
 	com_err("kdb_open", retval, "while initializing database");
 	if (dbargs[0]) free(dbargs[0]);
 	goto free1;
