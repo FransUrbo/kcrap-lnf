@@ -1,0 +1,49 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: kcrap
+Source: <url://example.com>
+
+Files:     .gitignore
+           Makefile.in
+           README
+           TODO
+           config.h.in
+           configure.in
+           kcrap.txt
+           lib/Makefile.in
+           lib/kcrap.h
+           lib/kcrap_int.h
+           lib/kcraplib.c
+           patches/samba-kcrap.patch
+           server/Makefile.in
+           server/kcrap_kdb.c
+           server/kcrap_kdb.c.orig
+           server/kcrap_kdb.h
+           server/kcrap_server.c
+           server/kcrap_server.conf
+           server/kdb-stub.h
+           server/modules.c
+           server/modules.h
+           server/modules/ntlm.c
+           server/modules/ntlmv2.c
+           server/modules/ntlmv2s.c
+           server/util.c
+           server/util.h
+           test/Makefile.in
+           test/kcrapclient.c
+           test/kcraptest.c
+Copyright: 1990-1991 the Massachusetts Institute of Technology.
+           __NO_COPYRIGHT_NOR_LICENSE__
+License:   __UNKNOWN__
+
+Files:     config.guess
+           config.sub
+           configure
+           install-sh
+Copyright: 1992-2006 Free Software Foundation, Inc.
+           1994 X Consortium
+License:   __AUTO_PERMISSIVE__
+ Auto-generated file under the permissive license.
+
+#----------------------------------------------------------------------------
+# Files marked as NO_LICENSE_TEXT_FOUND may be covered by the following
+# license/copyright files.

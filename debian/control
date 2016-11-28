@@ -1,0 +1,27 @@
+Source: kcrap-lnf
+Section: net
+Priority: optional
+Maintainer: Turbo Fredriksson <turbo@bayour.com>
+Build-Depends: debhelper (>=9), krb5-multidev, libkrb5-dev, libssl-dev, comerr-dev
+Standards-Version: 3.9.6
+Homepage: https://github.com/FransUrbo/kcrap-lnf
+
+Package: kcrap-common
+Architecture: any
+Multi-Arch: foreign
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Kerberos Challenge Response Authentication Protocol - KCRAP
+
+Package: kcrap-client
+Architecture: any
+Multi-Arch: foreign
+Depends: ${misc:Depends}, ${shlibs:Depends}, kcrap-common
+Description: Kerberos Challenge Response Authentication Protocol - KCRAP
+ This is the client package.
+
+Package: kcrap-server
+Architecture: any
+Multi-Arch: foreign
+Depends: ${misc:Depends}, ${shlibs:Depends}, kcrap-common, krb5-admin-server
+Description: Kerberos Challenge Response Authentication Protocol - KCRAP
+ This is the server package.

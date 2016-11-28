@@ -1,0 +1,16 @@
+#!/usr/bin/make -f
+# You must remove unused comment lines for the released package.
+#export DH_VERBOSE = 1
+#export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+#export DEB_CFLAGS_MAINT_APPEND  = -Wall -pedantic
+#export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
+
+CONFARGS_SYS := --prefix=/usr --includedir=\${prefix}/include --mandir=\${prefix}/share/man --infodir=\${prefix}/share/info --sysconfdir=/etc --localstatedir=/var --disable-silent-rules --libdir=\${prefix}/lib/x86_64-linux-gnu
+CONFIGUREARGS := --with-server --with-mit-krb5-src=/usr/src/krb5/src/include
+
+override_dh_auto_configure:
+	autoreconf -fiv
+	./configure $(CONFARGS_SYS) $(CONFIGUREARGS)
+
+%:
+	dh $@
