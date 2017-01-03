@@ -1,1 +1,2 @@
 usr/sbin/kcrap_server
+debian/tmp/usr/etc/kcrap_server.conf	/etc
