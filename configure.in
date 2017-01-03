@@ -225,7 +225,6 @@ AC_ARG_WITH(tests,
 
 
 if [[ "$build_server" = 1 ]]; then
-  save_LIBS="$LIBS"
   AC_SEARCH_LIBS(krb5_db_open, kdb5, [
     AC_DEFINE(HAVE_KRB5_DB_OPEN, [], [Have krb5_db_open (mit krb5 1.6)])
   ], [
@@ -235,6 +234,12 @@ if [[ "$build_server" = 1 ]]; then
       AC_MSG_ERROR(neither krb5_db_open nor krb5_db_set_name found in libkdb)
     ])
   ])
+
+  AC_SEARCH_LIBS(krb5_klog_syslog, kadm5srv, [
+    AC_SUBST([LIBS], ["-lkadm5srv"])
+  ], [AC_MSG_FAILURE([
+    krb5_klog_syslog in libkadm5srv is missing.
+  ])])
 
   AC_MSG_CHECKING(8-argument krb5_db_fetch_mkey() with KVNO)
   AC_TRY_LINK([#include <unistd.h>
@@ -248,8 +253,6 @@ if [[ "$build_server" = 1 ]]; then
   ],[
     AC_MSG_RESULT(not 8-argument)
   ])
-
-  LIBS="$save_LIBS"
 fi
 
 
