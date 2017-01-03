@@ -22,6 +22,8 @@ kcrap_server: $(OBJS)
 install: kcrap_server
 	mkdir -p $(DESTDIR)$(PREFIX)/sbin
 	$(INSTALL) kcrap_server $(DESTDIR)$(PREFIX)/sbin/
+	mkdir -p $(DESTDIR)$(PREFIX)/etc
+	$(INSTALL) -m0644 kcrap_server.conf $(DESTDIR)$(PREFIX)/etc/
 
 clean:
 	rm -f $(OBJS) *.o *~ modules/*~ kcrap_server modules_list.h
