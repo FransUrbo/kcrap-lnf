@@ -32,12 +32,12 @@ Building and installing KCRAP
          Enable building of KCRAP server (see note on --with-mit-krb5-src)
      --with-mit-krb5-src=PATH
          Location of MIT KerberosV source code (recommended when building
-	 server.)  KCRAP will want to use kdb.h from this location in the
-	 server code.  KCRAP also ships with a "stub" version of kdb.h from
-	 MIT Kerberos versions 1.4.4 and 1.6.2.  It will try to determine
-	 the correct version to use, but you should specify the correct
-	 path of kdb.h from your Kerberos build in order to ensure
-	 compatibility.
+	 server.)  KCRAP will want to use kdb.h and adm_proto.h from this
+	 location in the server code.  KCRAP also ships with a "stub" version
+	 of kdb.h from MIT Kerberos versions 1.4.4 and 1.6.2.  It will try
+	 to determine the correct version to use, but you should specify the
+	 correct path of header files from your Kerberos build in order to
+	 ensure compatibility.
 
    IMPORTANT:
 	KCRAP server will not be built unless it finds a usable kdb.h.
