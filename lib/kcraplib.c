@@ -42,6 +42,7 @@ struct kcrap_context* kcrap_init(char* keytab, char* service) {
     struct kcrap_context *context;
     krb5_error_code retval;
     char *names[4];
+    krb5_data *realm_data;
     char *realm;
 
     if ((context = calloc(1, sizeof(struct kcrap_context))) == NULL) {
@@ -67,8 +68,24 @@ struct kcrap_context* kcrap_init(char* keytab, char* service) {
 	    break;
 	}
 
-	if ((retval = krb5_get_default_realm(context->krb5_context, &realm)))
+	/* Determine our own principal name */
+	if (service == NULL)
+	    service = "host";
+	if ((retval = krb5_sname_to_principal(context->krb5_context, NULL, service,
+					      KRB5_NT_SRV_HST, &context->sprinc)))
 	    break;
+
+	/* Determine our own realm */
+	realm_data = krb5_princ_realm(context->krb5_context, context->sprinc);
+	if (realm_data->length == 0) {
+	    /* Krb5 couldn't find a match in [domain_realm], so use the system default realm instead. */
+	    if ((retval = krb5_get_default_realm(context->krb5_context, &realm)))
+		break;
+	    realm_data->data = strdup(realm);
+	    realm_data->length = strlen(realm);
+	} else {
+	    realm = strndup(realm_data->data, realm_data->length);
+	}
 
 	names[0] = "realms";
 	names[1] = realm;
