@@ -1,3 +1,9 @@
+kcrap-lnf (0.2.3-3) UNRELEASED; urgency=low
+
+  * Recompile and bumpt version.
+
+ -- Turbo Fredriksson <turbo@bayour.com>  Thu, 05 Jan 2017 10:05:18 +0000
+
 kcrap-lnf (0.2.3-2) UNRELEASED; urgency=low
 
   * Merge latest GIT version.
