@@ -24,7 +24,10 @@ Building and installing KCRAP
 
 1) Extract the KCRAP distribution file
 
-2) Run configure:
+2a) Generate the configure script:
+   autoreconf -fiv
+
+2b) Run configure:
    ./configure [arguments]
 
    Configure arguments of note:
